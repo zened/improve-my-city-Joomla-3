@@ -92,6 +92,15 @@ class ImprovemycityViewAddissue extends JView
 			return false;
 		}
 		
+		// get the menu parameters
+		$menuparams = $this->state->get("parameters.menu");
+		$html5 = $menuparams->get("html5");
+
+		//select if HTML5 or previous and load the appropriate template
+		if($html5 == 0)
+			$tpl = 'nohtml5';
+		else
+			$tpl = null;		
         parent::display($tpl);
 		
 		// Set the document
@@ -102,8 +111,10 @@ class ImprovemycityViewAddissue extends JView
 	{
 		$document = JFactory::getDocument();
 		
-		if($this->loadbootstrapcss == 1)
-			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap.min.css');					
+		if($this->loadbootstrapcss == 1){
+			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap.min.css');
+			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap-responsive.min.css');
+		}					
 		
 		$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/css/improvemycity.css');	
 
@@ -113,17 +124,21 @@ class ImprovemycityViewAddissue extends JView
 		//$document->addStyleDeclaration($ie); 	//do not work
 		$document->addCustomTag($ie);			//work :)
 	
+		
+		
 		//add scripts
 		if($this->loadjquery == 1){
 			$document->addScript(JURI::root(true).'/components/com_improvemycity/js/jquery-1.7.1.min.js');
-			//jquery noConflict
-			$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );
 		}
-		
+		//jquery noConflict
+		$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );
+				
 		if($this->loadjqueryui == 1){
 			$document->addScript(JURI::root(true).'/components/com_improvemycity/js/jquery-ui-1.8.18.custom.min.js');
 		}
 		
+		if($this->loadbootstrap == 1)
+			$document->addScript(JURI::root(true).'/components/com_improvemycity/bootstrap/js/bootstrap.min.js');		
 		
 		$document->addScript(JURI::root(true).'/components/com_improvemycity/js/improvemycity.js');	
 		
@@ -137,7 +152,7 @@ class ImprovemycityViewAddissue extends JView
 		$LAT = $this->lat;
 		$LON = $this->lon;
 
-		$googleMapInit = "
+		$googleMap = "
 			var geocoder = new google.maps.Geocoder();
 			var map;
 			var marker;
@@ -255,13 +270,20 @@ class ImprovemycityViewAddissue extends JView
 			}
 
 			// Onload handler to fire off the app.
-			google.maps.event.addDomListener(window, 'load', initialize);
+			//google.maps.event.addDomListener(window, 'load', initialize);
 			
 		";
 
+		$documentReady = "
+		jImc(document).ready(function() {
+			initialize();
+		});
+		";
+		
 		//add the javascript to the head of the html document
-		$document->addScriptDeclaration($googleMapInit);
-	
+		$document->addScriptDeclaration($googleMap);
+		$document->addScriptDeclaration($documentReady);
+			
 		$f = "
 		Joomla.submitbutton = function(task) {
 			if (task == 'issue.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {

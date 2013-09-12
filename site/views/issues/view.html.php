@@ -2,9 +2,9 @@
 /**
  * @version     2.5.x
  * @package     com_improvemycity
- * @copyright   Copyright (C) 2011 - 2012 URENIO Research Unit. All rights reserved.
+ * @copyright   Copyright (C) 2011 - 2013 URENIO Research Unit. All rights reserved.
  * @license     GNU Affero General Public License version 3 or later; see LICENSE.txt
- * @author      Ioannis Tsampoulatidis for the URENIO Research Unit
+ * @author      Panagiotis Tsarchopoulos for the URENIO Research Unit
  */
 
 
@@ -117,8 +117,23 @@ class ImprovemycityViewIssues extends JView
 			return false;
 		}
 		
-        parent::display($tpl);
-		
+		// get the menu parameters 
+		$menuparams = $this->state->get("parameters.menu");
+
+		//check if IMC is on Home menu
+		if(empty($menuparams)){
+	        parent::display($tpl);
+		} 
+		else {
+			$html5 = $menuparams->get("html5");
+			//select if HTML5 or previous and load the appropriate template
+			if($html5 == 0)
+				$tpl = 'nohtml5';
+			else
+				$tpl = null;		
+	        parent::display($tpl);
+		}
+
 		// Set the document
 		$this->setDocument();
 		
@@ -275,8 +290,10 @@ class ImprovemycityViewIssues extends JView
 	{
 		$document = JFactory::getDocument();
 		
-		if($this->loadbootstrapcss == 1)
-			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap.min.css');	
+		if($this->loadbootstrapcss == 1){
+			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap.min.css');
+			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap-responsive.min.css');
+		}	
 		
 		$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/css/mega-menu.css');	
 		$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/css/improvemycity.css');	
@@ -284,15 +301,17 @@ class ImprovemycityViewIssues extends JView
 		//add scripts
 		if($this->loadjquery == 1){
 			$document->addScript(JURI::root(true).'/components/com_improvemycity/js/jquery-1.7.1.min.js');
-			//jquery noConflict
-			$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );
 		}
+		//jquery noConflict
+		$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );
+				
 		if($this->loadbootstrap == 1)
 			$document->addScript(JURI::root(true).'/components/com_improvemycity/bootstrap/js/bootstrap.min.js');
 
 		$document->addScript(JURI::root(true).'/components/com_improvemycity/js/improvemycity.js');	
 	
 		//add google maps
+		//$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
 		$document->addScript("https://maps.google.com/maps/api/js?sensor=false&language=". $this->language ."&region=". $this->region);
 		$document->addScript(JURI::root(true).'/components/com_improvemycity/js/infobox_packed.js');		
 
@@ -305,9 +324,9 @@ class ImprovemycityViewIssues extends JView
 		$this->createCustomMarkers($this->categories);
 		$this->customMarkers = substr($this->customMarkers, 0, -2);	//remove /n and comma
 		
-		$googleMapInit = "
+		$googleMap = "
 			var geocoder = new google.maps.Geocoder();
-			var map = null;
+			var map;
 			var gmarkers = [];
 			
 			function zoomIn() {
@@ -328,13 +347,16 @@ class ImprovemycityViewIssues extends JView
 			var bounds = new google.maps.LatLngBounds();			
 			var infoWindow = null;
 			var infoBox = null;
+			  		
 
+        		
 			function initialize() {
 				var LAT = ".$LAT.";
 				var LON = ".$LON.";
 
 				var latLng = new google.maps.LatLng(LAT, LON);
 				map = new google.maps.Map(document.getElementById('mapCanvas'), {
+				
 				zoom: ".$this->zoom.",
 				center: latLng,
 				panControl: false,
@@ -544,79 +566,84 @@ class ImprovemycityViewIssues extends JView
 			}			
 			
 			// Onload handler to fire off the app.
-			google.maps.event.addDomListener(window, 'load', initialize);
+			//google.maps.event.addDomListener(window, 'load', initialize);
+														
 		";
 
 		
-		$megamenu_js = "
+		$documentReady = "
 		
 		jImc(document).ready(function() {
-		jImc(\".imc-issue-item\").mouseenter(function(event)
-		{
-		jImc(this).addClass(\"imc-highlight\");
-		markerhover(jImc(this).attr('id').substring(8));
-		});
-		
-		jImc(\".imc-issue-item\").mouseleave(function(event)
-		{
-		jImc(this).removeClass(\"imc-highlight\");
-		markerout(jImc(this).attr('id').substring(8));
-		});
-		
-		jImc(document).click(function(e) {
-		if( jImc('#drop-1').is('.hover')) { jImc('#drop-1').removeClass('hover');	}
-		if( jImc('#drop-2').is('.hover')) { jImc('#drop-2').removeClass('hover');	}
-		if( jImc('#drop-3').is('.hover')) { jImc('#drop-3').removeClass('hover');	}
-		});
+					
+			initialize();
+					
+			jImc(\".imc-issue-item\").mouseenter(function(event)
+			{
+			jImc(this).addClass(\"imc-highlight\");
+			markerhover(jImc(this).attr('id').substring(8));
+			});
 			
-		jImc('#btn-1').click(function(event)
-		{
-		if( jImc('#drop-2').is('.hover')) { jImc('#btn-2').click(); }
-		if( jImc('#drop-3').is('.hover')) { jImc('#btn-3').click(); }
-		
-		if( jImc('#drop-1').is('.hover')) {
-			jImc('#drop-1').removeClass('hover');
-		}
-		else{
-			jImc('#drop-1').addClass('hover');
-		}
-		event.stopPropagation();
-		});
+			jImc(\".imc-issue-item\").mouseleave(function(event)
+			{
+			jImc(this).removeClass(\"imc-highlight\");
+			markerout(jImc(this).attr('id').substring(8));
+			});
 			
-		jImc('#btn-2').click(function(event)
-		{
-		if( jImc('#drop-1').is('.hover')) { jImc('#btn-1').click(); }
-		if( jImc('#drop-3').is('.hover')) { jImc('#btn-3').click(); }
+			jImc(document).click(function(e) {
+			if( jImc('#drop-1').is('.hover')) { jImc('#drop-1').removeClass('hover');	}
+			if( jImc('#drop-2').is('.hover')) { jImc('#drop-2').removeClass('hover');	}
+			if( jImc('#drop-3').is('.hover')) { jImc('#drop-3').removeClass('hover');	}
+			});
+				
+			jImc('#btn-1').click(function(event)
+			{
+			if( jImc('#drop-2').is('.hover')) { jImc('#btn-2').click(); }
+			if( jImc('#drop-3').is('.hover')) { jImc('#btn-3').click(); }
 			
-		if( jImc('#drop-2').is('.hover')) {
-			jImc('#drop-2').removeClass('hover');
-		}
-		else{
-			jImc('#drop-2').addClass('hover');
-		}
-		event.stopPropagation();
-		});
-		jImc('#btn-3').click(function(event)
-		{
-		if( jImc('#drop-1').is('.hover')) { jImc('#btn-1').click(); }
-		if( jImc('#drop-2').is('.hover')) { jImc('#btn-2').click(); }
-			
-		if( jImc('#drop-3').is('.hover')) {
-			jImc('#drop-3').removeClass('hover');
-		}
-		else{
-			jImc('#drop-3').addClass('hover');
-		}
-		event.stopPropagation();
-		});
-			
-		jImc('.megadrop').click(function(event) { event.stopPropagation();	});
+			if( jImc('#drop-1').is('.hover')) {
+				jImc('#drop-1').removeClass('hover');
+			}
+			else{
+				jImc('#drop-1').addClass('hover');
+			}
+			event.stopPropagation();
+			});
+				
+			jImc('#btn-2').click(function(event)
+			{
+			if( jImc('#drop-1').is('.hover')) { jImc('#btn-1').click(); }
+			if( jImc('#drop-3').is('.hover')) { jImc('#btn-3').click(); }
+				
+			if( jImc('#drop-2').is('.hover')) {
+				jImc('#drop-2').removeClass('hover');
+			}
+			else{
+				jImc('#drop-2').addClass('hover');
+			}
+			event.stopPropagation();
+			});
+			jImc('#btn-3').click(function(event)
+			{
+			if( jImc('#drop-1').is('.hover')) { jImc('#btn-1').click(); }
+			if( jImc('#drop-2').is('.hover')) { jImc('#btn-2').click(); }
+				
+			if( jImc('#drop-3').is('.hover')) {
+				jImc('#drop-3').removeClass('hover');
+			}
+			else{
+				jImc('#drop-3').addClass('hover');
+			}
+			event.stopPropagation();
+			});
+				
+			jImc('.megadrop').click(function(event) { event.stopPropagation();	});
 			
 		});
 		";
 		
-		//add the javascript to the head of the html document
-		$document->addScriptDeclaration($googleMapInit);
-		$document->addScriptDeclaration($megamenu_js);
+		
+		$document->addScriptDeclaration($googleMap);
+		$document->addScriptDeclaration($documentReady);
+		
 	}
 }

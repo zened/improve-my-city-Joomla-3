@@ -15,14 +15,12 @@
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#dfdedf));
 	margin: 1px 1px 10px 1px; 
 	padding: 10px 0;
-	display: inline-block;
-	width: 100%;
 }
 #imc-menu {vertical-align: middle; padding: 0 10px;}
 #imc-menu form{margin: 0;}
 #imc-menu .btn-group  {display:inline-block;/* float:left; */}
-#imc-menu {vertical-align: middle;}
-
+#imc-menu {vertical-align: middle; line-height: 22px; height: 28px;}
+#imc-menu.issueslist {line-height: 40px; height: 40px;}
 #imc-menu h2.imc-title {
 	font-family: 'Open Sans Condensed', sans-serif; color: #790101; 
 	display: inline; padding:0; margin: 0;
@@ -42,19 +40,34 @@
  
 /* Layout*/
 #imc-content{padding: 5px 15px 15px 15px; overflow: hidden;}
+	/* 60 list - 40 map */
+#imc-main-panel{
+	float:left;
+	width: 60%;
+	clear: both;
+}
+#imc-details-sidebar{
+	float:left; 
+	width: 40%; 
+}
+#imc-main-panel-fifty{float:left;	width: 50%;	clear: both;}
+#imc-details-sidebar-fifty{float:left;width: 50%; }
 
-.header-button {float: right;}
 
 
 /* map */
 #markerInfo img{padding: 2px; margin: 1px; border: none;}
-#mapCanvas{
+#imc-details-sidebar-fifty #mapCanvas{
 	width: 100%; 
 	height: 450px;
 	margin: 0 auto;
 }
-
-#mapCanvasNew{
+#imc-details-sidebar #mapCanvas{
+	width: 100%; 
+	height: 300px;
+	margin: 0 auto;
+}
+#imc-main-panel #mapCanvasNew{
 	width: 100%; 
 	height: 500px;
 	margin: 0 auto;
@@ -62,10 +75,14 @@
 #mapCanvasNew img{max-width: inherit;}
 
 
+
+/* sidebar */
+#imc-details-sidebar{min-height: 600px;} /* to display mega menu correctly if filters return no results*/
+
+
 /* issues list */
 .imc-issue-item{
-	
-	margin: 0 0 10px 0;
+	margin: 0 15px 10px 0;
 	padding: 5px;
 	border: solid 1px #ccc;
 	clear: both;
@@ -147,8 +164,7 @@ h2.imc-issue-title a:hover{color: #790101;}
 
 /* Issue details */
 #imc-issue-item-details{
-	
-	margin: 0 0 10px 0;
+	margin: 0 15px 10px 0;
 	padding: 5px;
 	border: solid 1px #ccc;
 	clear: both;
@@ -212,18 +228,15 @@ h2.imc-issue-title a:hover{color: #790101;}
 
 
 /* Issue New */
-#imc-new-issue{margin: 0; padding: 0; }
-
-
+#imc-new-issue{margin: 0px 0 0 10px; padding: 0; }
 #imc-new-issue #adminForm label{display: block;}
-#imc-new-issue #adminForm input.inputbox{ display: block; width: 100%;}
-#imc-new-issue #adminForm #jform_catid {width: 100%; display: block;}
+#imc-new-issue #adminForm .inputbox{	width: 100%; margin: 0; }
+#imc-new-issue #adminForm #jform_catid {width: 100%;}
 #imc-new-issue #adminForm #jform_description{max-height: 200px; min-height: 65px; max-width: 300px; min-width: 100%; width: 100%;}
 #imc-new-issue #adminForm select, #adminForm input, #adminForm  textarea{color: #45484C;}
-#adminForm input {margin-right: 5px; margin-bottom: 5px;}
+#imc-new-issue #adminForm fieldset{margin: 0; padding: 0 10px;}
 
-
-#imc-lock-wrapper{width: auto;height: auto; position: relative;}
+#imc-lock-wrapper{width: 352px;height: 450px; position: relative;}
 #imc-form-wrapper{z-index: 0; }
 #imc-lock {
 	z-index: 1;
@@ -236,38 +249,5 @@ h2.imc-issue-title a:hover{color: #790101;}
 	border-radius: 4px 4px 4px 4px;
 }
 
-.hr-button .imc-right {margin-right: 5px;}
-fieldset {margin-right: 20px;}
-/* ==========================
-   Media Queries - max-width: 767px
-   ========================== */
-@media(max-width:767px) {
-	
-	.header-button {display: inline-block; text-align: center; width: 100%; padding-top: 5px;margin: 0 auto;}
-  	#mega-menu {text-align: center;margin: 0 auto;}
-  	#mega-menu li {float: none; margin-right: 0;}
-  	.imc-left, .imc-right, .hr-button {float: none;display: block; padding-top: 5px;}
-	.hr-button .imc-right {margin-right: 0px;}	
-	#imc-menu h2.imc-title {text-align: center;display: block; height: auto; margin: 0 auto; float: none;}
-	#imc-new-issue{padding: 10px 0; }
-	fieldset {margin: 0 20px 0 3px;}
-	
-	
-	  	
-} /* End of layout 480px - 767px */
 
-/* ===========================
-   Media Queries - max-width: 480px
-   =========================== */
-@media(max-width:480px) {
-	.imc-wrapper {padding: 0px;}
-	
-}
-
-@media(max-width:320px) {
-	#imc-new-issue #adminForm #jform_catid {width: 185px; }
-	#imc-new-issue #adminForm input.inputbox{width: 185px; }
-	#imc-new-issue #adminForm #jform_description{max-height: 200px; min-height: 65px; max-width: 185px; min-width: 185px; width: 185px;}
-	#imc-new-issue #adminForm #jform_photo{width: 185px;}	
-} 
-
+#content-main{padding: 0px;}

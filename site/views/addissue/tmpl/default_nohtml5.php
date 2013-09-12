@@ -16,6 +16,7 @@ JHtml::_('behavior.formvalidation');
 if($this->popupmodal == 1)
 	JHTML::_('behavior.modal', 'a.modal', array('handler' => 'ajax')); /* fix */
 ?>
+<style type="text/css">  @import url("<?php echo JURI::root(true).'/components/com_improvemycity/css/improvemycity_nohtml5.css'; ?>"); </style>
 
 <div id="imc-wrapper" class="imc <?php echo $this->pageclass_sfx; ?>">
 	<?php if ($this->params->get('show_page_heading', 0)) : ?>			
@@ -29,27 +30,24 @@ if($this->popupmodal == 1)
 	<?php endif; ?>	
 	
 	<?php /* <h2 class="issue-title"><?php echo JText::_('NEW_ISSUE');?></h2> */ ?>
-	<div class="row-fluid">
-	<div class="span12">
+	
 	<div id="imc-header">
 		<div id="imc-menu">
 			<h2 class="imc-title"><?php echo JText::_('NEW_ISSUE');?></h2>
 			<!-- bootstrap buttons -->	
 			
 			<!-- Return to issues -->
-			<div class="hr-button">
-				<a class="btn imc-right" href="<?php echo ImprovemycityHelper::generateRouteLink('index.php?option=com_improvemycity');?>"><i class="icon-arrow-left"></i> <?php echo JText::_('RETURN_TO_ISSUES');?></a>
+			<div class="btn-group imc-right">
+				<a class="btn" href="<?php echo ImprovemycityHelper::generateRouteLink('index.php?option=com_improvemycity');?>"><i class="icon-arrow-left"></i> <?php echo JText::_('RETURN_TO_ISSUES');?></a>
 			</div>
 		
 		</div>
-	</div>
-	</div>
 	</div>	
-	<div class="row-fluid">
-		<div class="span6">
+	<div id="imc-content">
+		<div id="imc-main-panel">
 			<div id="mapCanvasNew"><?php echo JText::_('COM_IMPROVEMYCITY');?></div>
 		</div>
-		<div class="span6">
+		<div id="imc-details-sidebar">
 			<div id="imc-new-issue">
 			
 				<?php if($this->guest) :?>			

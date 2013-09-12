@@ -2,9 +2,9 @@
 /**
  * @version     2.5.x
  * @package     com_improvemycity
- * @copyright   Copyright (C) 2011 - 2013 URENIO Research Unit. All rights reserved.
+ * @copyright   Copyright (C) 2011 - 2012 URENIO Research Unit. All rights reserved.
  * @license     GNU Affero General Public License version 3 or later; see LICENSE.txt
- * @author      Panagiotis Tsarchopoulos for the URENIO Research Unit
+ * @author      Ioannis Tsampoulatidis for the URENIO Research Unit
  */
 
 // no direct access
@@ -18,6 +18,7 @@ JHtml::_('behavior.framework', true);
 $listOrder	= $this->escape($this->state->get('list.ordering'));
 $listDirn	= $this->escape($this->state->get('list.direction'));
 ?>
+<style type="text/css">  @import url("<?php echo JURI::root(true).'/components/com_improvemycity/css/improvemycity_nohtml5.css'; ?>"); </style> 
 
 <div id="imc-wrapper" class="imc <?php echo $this->pageclass_sfx; ?>">
 	<?php if ($this->params->get('show_page_heading', 0)) : ?>			
@@ -30,9 +31,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 	</h1>
 	<?php endif; ?>	
 
-	<div class="row-fluid">
-	  <div class="span12">
-	  <div id="imc-header">
+	<div id="imc-header">
 		<div id="imc-menu" class="issueslist">
 			<!-- Filters -->
 			<form action="<?php echo htmlspecialchars(JFactory::getURI()->toString()); ?>" method="post" name="adminForm" id="adminForm">
@@ -94,24 +93,23 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 								</ul>						
 							</div>
 						</div>
-					</li>
+					</li>					
 				</ul>
 			</form>	
-			<div class="header-button">
-				<a class="btn btn-large btn-primary rr" href="<?php echo ImprovemycityHelper::generateRouteLink('index.php?option=com_improvemycity&task=addIssue');?>"><i class="icon-plus icon-white"></i> <?php echo JText::_('REPORT_AN_ISSUE');?></a>
+	
+			<!-- New Issue -->
+			<div class="btn-group imc-right">
+				<a class="btn btn-large btn-primary" href="<?php echo ImprovemycityHelper::generateRouteLink('index.php?option=com_improvemycity&task=addIssue');?>"><i class="icon-plus icon-white"></i> <?php echo JText::_('REPORT_AN_ISSUE');?></a>
 			</div>
+				
 			
 		</div>
-	  </div>	
-	  </div>
 	</div>
 	
 	<div id="loading"><img src="<?php echo JURI::base().'components/com_improvemycity/images/ajax-loader.gif';?>" /></div>
 	
-	<div class="row-fluid">
-	
-		<div class="span6">
-		<div class="imc-wrapper">
+	<div id="imc-content">
+		<div id="imc-main-panel-fifty">
 			<?php if(empty($this->items)) : ?>
 				<div class="alert alert-error width75">
 				<?php echo JText::_('COM_IMPROVEMYCITY_FILTER_REVISION'); ?>
@@ -181,17 +179,14 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 			<div id="system">
 			<?php echo $this->pagination->getPagesLinks(); ?>
 			</div>
-		</div>	
+			
 		</div>
-		<div class="span6">
-			<div class="imc-wrapper">
+		<div id="imc-details-sidebar-fifty">
 			<div id="mapCanvas"><?php echo JText::_('COM_IMPROVEMYCITY');?></div>
 			<?php if($this->credits == 1) : ?>
 				<div style="margin-top: 30px;" class="alert alert-info"><?php echo JText::_('COM_IMPROVEMYCITY_INFOALERT');?></div>
 			<?php endif; ?>
-			</div>
 		</div>	
-	
 	</div>
 </div>
 

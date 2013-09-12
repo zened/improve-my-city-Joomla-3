@@ -116,6 +116,16 @@ class ImprovemycityViewIssue extends JView
 		$model = $this->getModel();
 		$model->hit();		
 		
+		
+		// get the menu parameters
+		$menuparams = $this->state->get("parameters.menu");
+		$html5 = $menuparams->get("html5");
+
+		//select if HTML5 or previous and load the appropriate template
+		if($html5 == 0)
+			$tpl = 'nohtml5';
+		else
+			$tpl = null;				
 		parent::display($tpl);
 		
 		// Set the document
@@ -153,21 +163,25 @@ class ImprovemycityViewIssue extends JView
 		$document->setTitle($this->item->title);
 		$document->setDescription(mb_substr($this->item->description, 0, 130, 'utf-8') . '...');
 		
-		if($this->loadbootstrapcss == 1)
-			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap.min.css');			
+		if($this->loadbootstrapcss == 1){
+			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap.min.css');
+			$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/bootstrap/css/bootstrap-responsive.min.css');
+		}		
 		
 		$document->addStyleSheet(JURI::root(true).'/components/com_improvemycity/css/improvemycity.css');	
 
 		//add scripts
 		if($this->loadjquery == 1){
 			$document->addScript(JURI::root(true).'/components/com_improvemycity/js/jquery-1.7.1.min.js');
-			//jquery noConflict
-			$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );
 		}
+		//jquery noConflict
+		$document->addScriptDeclaration( 'var jImc = jQuery.noConflict();' );		
 		
 		if($this->loadjqueryui == 1){
 			$document->addScript(JURI::root(true).'/components/com_improvemycity/js/jquery-ui-1.8.18.custom.min.js');
 		}
+		if($this->loadbootstrap == 1)
+			$document->addScript(JURI::root(true).'/components/com_improvemycity/bootstrap/js/bootstrap.min.js');		
 		
 		$document->addScript(JURI::root(true).'/components/com_improvemycity/js/improvemycity.js');	
 		
@@ -180,7 +194,7 @@ class ImprovemycityViewIssue extends JView
 		$LAT = $this->lat;
 		$LON = $this->lon;
 
-		$googleMapInit = "
+		$googleMap = "
 			var geocoder = new google.maps.Geocoder();
 			var map = null;
 			var gmarkers = [];
@@ -276,12 +290,19 @@ class ImprovemycityViewIssue extends JView
 			}
 
 			// Onload handler to fire off the app.
-			google.maps.event.addDomListener(window, 'load', initialize);
+			//google.maps.event.addDomListener(window, 'load', initialize);
 			
 		";
 
+		$documentReady = "
+		jImc(document).ready(function() {
+			initialize();
+		});
+		";
+		
 		//add the javascript to the head of the html document
-		$document->addScriptDeclaration($googleMapInit);
+		$document->addScriptDeclaration($googleMap);
+		$document->addScriptDeclaration($documentReady);
 		
 		//also pass base so as to display comment image indicator
 		$js = "var com_improvemycity = {};\n";

@@ -2,9 +2,9 @@
 /**
  * @version     2.5.x
  * @package     com_improvemycity
- * @copyright   Copyright (C) 2011 - 2012 URENIO Research Unit. All rights reserved.
+ * @copyright   Copyright (C) 2011 - 2013 URENIO Research Unit. All rights reserved.
  * @license     GNU Affero General Public License version 3 or later; see LICENSE.txt
- * @author      Ioannis Tsampoulatidis for the URENIO Research Unit
+ * @author      Panagiotis Tsarchopoulos for the URENIO Research Unit
  * 
  * **** WARNING *****
  * DURING JSON REQUESTS, USERNAME AND PASSWORD ALTHOUGH TRANSMITTED ENCRYPTED, MIGHT BE STOLEN BY SNIFFERS AND USED AS IS. 
@@ -238,6 +238,7 @@ class ImprovemycityControllerMobile extends JController
 		$data['address'] = $address;
 		$data['description'] = $description;
 		$data['userid'] = $userid;
+		$data['inserted_by'] = 1; //1 for mobile
 		
 		$s = $model->save($data);
 		echo json_encode($s); //0 or 1
