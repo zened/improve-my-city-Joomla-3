@@ -15,7 +15,7 @@ jimport('joomla.application.component.view');
 /**
  * View to edit
  */
-class ImprovemycityViewReports extends JView
+class ImprovemycityViewReports extends JViewLegacy
 {
 	protected $state;
 	protected $items;

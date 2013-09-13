@@ -10,7 +10,9 @@
 
 // no direct access
 defined('_JEXEC') or die;
-
+if(!defined('DS'))
+	define('DS',DIRECTORY_SEPARATOR);
+	
 // Access check.
 if (!JFactory::getUser()->authorise('core.manage', 'com_improvemycity')) {
 	return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
@@ -22,6 +24,6 @@ JLoader::register('ImprovemycityHelper', dirname(__FILE__) . DS . 'helpers' . DS
 // Include dependancies
 jimport('joomla.application.component.controller');
 
-$controller	= JController::getInstance('Improvemycity');
+$controller	= JControllerLegacy::getInstance('Improvemycity');
 $controller->execute(JRequest::getCmd('task'));
 $controller->redirect();

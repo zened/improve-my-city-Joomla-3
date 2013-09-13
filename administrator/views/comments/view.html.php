@@ -15,7 +15,7 @@ jimport('joomla.application.component.view');
 /**
  * View class for a list of Improvemycity.
  */
-class ImprovemycityViewComments extends JView
+class ImprovemycityViewComments extends JViewLegacy
 {
 	protected $items;
 	protected $pagination;

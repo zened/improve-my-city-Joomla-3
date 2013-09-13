@@ -11,7 +11,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-class ImprovemycityController extends JController
+class ImprovemycityController extends JControllerLegacy
 {
 	/**
 	 * Method to display a view.
