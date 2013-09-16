@@ -116,13 +116,11 @@ class ImprovemycityModelKeys extends JModelList
 			}
 		}
 
-		// Add the list ordering clause.
-		$orderCol	= $this->state->get('list.ordering');
-		$orderDirn	= $this->state->get('list.direction');
-        if ($orderCol && $orderDirn) {
-		    $query->order($db->getEscaped($orderCol.' '.$orderDirn));
-        }
-
+       
+        // Add the list ordering clause.
+        $orderCol = $this->state->get('list.ordering', 'ordering');
+        $orderDirn = $this->state->get('list.direction', 'ASC');
+        $query->order($db->escape($orderCol . ' ' . $orderDirn));
 		return $query;
 	}
 	

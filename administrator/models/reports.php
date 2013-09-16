@@ -121,16 +121,12 @@ class ImprovemycityModelReports extends JModelList
 			}
 		}
 
-		$query->order('a.reported DESC');
+		//$query->order('a.reported DESC');
 
-
-		// Add the list ordering clause.
-		$orderCol	= $this->state->get('list.ordering');
-		$orderDirn	= $this->state->get('list.direction');
-        if ($orderCol && $orderDirn) {
-		    $query->order($db->getEscaped($orderCol.' '.$orderDirn));
-        }
-		
+        // Add the list ordering clause.
+        $orderCol = $this->state->get('list.ordering', 'ordering');
+        $orderDirn = $this->state->get('list.direction', 'DESC');
+        $query->order($db->escape($orderCol . ' ' . $orderDirn));        
 		
 		//Get all records
 		$this->setState('list.limit', 0);
