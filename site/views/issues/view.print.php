@@ -16,7 +16,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the Improvemycity component
  */
-class ImprovemycityViewIssues extends JView
+class ImprovemycityViewIssues extends JViewLegacy
 {
 	protected $state;
 	protected $items;

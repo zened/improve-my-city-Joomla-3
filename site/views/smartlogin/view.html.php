@@ -15,7 +15,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the Improvemycity component
  */
-class ImprovemycityViewSmartlogin extends JView
+class ImprovemycityViewSmartlogin extends JViewLegacy
 {
 	
 	function display($tpl = null)

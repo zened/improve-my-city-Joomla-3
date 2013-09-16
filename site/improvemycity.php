@@ -8,6 +8,8 @@
  */
 
 defined('_JEXEC') or die;
+if(!defined('DS'))
+	define('DS',DIRECTORY_SEPARATOR);
 
 // require helper file
 JLoader::register('ImprovemycityHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'improvemycity.php');
@@ -16,6 +18,6 @@ JLoader::register('ImprovemycityHelper', dirname(__FILE__) . DS . 'helpers' . DS
 jimport('joomla.application.component.controller');
 
 // Execute the task.
-$controller	= JController::getInstance('Improvemycity');
+$controller	= JControllerLegacy::getInstance('Improvemycity');
 $controller->execute(JRequest::getVar('task'));
 $controller->redirect();

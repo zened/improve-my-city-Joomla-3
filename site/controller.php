@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
 
-class ImprovemycityController extends JController
+class ImprovemycityController extends JControllerLegacy
 {
 
 	public function display($cachable = false, $urlparams = false)

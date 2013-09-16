@@ -123,7 +123,7 @@ class ImprovemycityModelIssues extends JModelList
                 $return[$i]->path = $JCatNode->get('path');
                 $return[$i]->id = $JCatNode->id;
 				$params = new JRegistry();
-				$params->loadJSON($JCatNode->params);
+				$params->loadString($JCatNode->params);
 				$return[$i]->image = $params->get('image');
 
 				if($JCatNode->hasChildren())
@@ -153,7 +153,7 @@ class ImprovemycityModelIssues extends JModelList
 		
 		
 		// Convert the params field into an object, saving original in _params
-		$model_discussions = JModel::getInstance('Discussions', 'ImprovemycityModel');
+		$model_discussions = JModelLegacy::getInstance('Discussions', 'ImprovemycityModel');
 		for ($i = 0, $n = count($items); $i < $n; $i++) {
 			$item = &$items[$i];
 			
@@ -167,7 +167,7 @@ class ImprovemycityModelIssues extends JModelList
 			
 			if (!isset($this->_params)) {
 				$params = new JRegistry();
-				$params->loadJSON($item->params);
+				$params->loadString($item->params);
 				$item->params = $params;
 			}
 		}

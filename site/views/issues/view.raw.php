@@ -15,7 +15,7 @@ jimport('joomla.application.component.view');
 /**
  * Raw View class for the Improvemycity component
  */
-class ImprovemycityViewIssues extends JView
+class ImprovemycityViewIssues extends JViewLegacy
 {
 	protected $items;
 
