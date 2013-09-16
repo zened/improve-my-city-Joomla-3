@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * Model
  */
-class ImprovemycityModelUsers extends JModel
+class ImprovemycityModelUsers extends JModelLegacy
 {
 	
 	public function authenticateUser($username, $password)

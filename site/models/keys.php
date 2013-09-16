@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * Model
  */
-class ImprovemycityModelKeys extends JModel
+class ImprovemycityModelKeys extends JModelLegacy
 {
 	
 	function getSecretKey()

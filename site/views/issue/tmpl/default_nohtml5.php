@@ -46,7 +46,7 @@ JText::script('COM_IMPROVEMYCITY_WRITE_COMMENT');
 				<?php if($this->item->currentstatus != 3 || $this->allowVotingOnClose == 1) : ?>
 					<?php if(!$this->guest) : ?>
 						<?php if(!$this->hasVoted) :?>
-							<a class="btn btn-success" href="javascript:vote(<?php echo $this->item->id; ?>, '<?php echo JUtility::getToken(); ?>');"><i class="icon-plus icon-white"></i> <?php echo JText::_('NEW_VOTE');?></a>
+							<a class="btn btn-success" href="javascript:vote(<?php echo $this->item->id; ?>, '<?php echo JSession::getFormToken(); ?>');"><i class="icon-plus icon-white"></i> <?php echo JText::_('NEW_VOTE');?></a>
 						<?php else : //already voted ?>
 							<button class="btn btn-success disabled" disabled="disabled"><i class="icon-plus icon-white"></i> <?php echo JText::_('ALREADY_VOTED');?></button>
 						<?php endif; ?>
@@ -159,14 +159,14 @@ JText::script('COM_IMPROVEMYCITY_WRITE_COMMENT');
 								<input type="hidden" name="task" value="addComment" />
 								<input type="hidden" name="format" value="json" />
 								<input type="hidden" name="issue_id" value="<?php echo $this->item->id; ?>" />
-								<input type="hidden" name="<?php echo JUtility::getToken(); ?>" value="1" />
+								<input type="hidden" name="<?php echo JSession::getFormToken(); ?>" value="1" />
 								<textarea id="imc-comment-area" name="description" style="max-height: 200px; min-height: 65px; max-width: 100%; min-width: 100%; width: 100%;"></textarea>
 								<div id="commentBtn">
 									<a class="btn imc-right" href="javascript:comment();"><i class="icon-pencil"></i> <?php echo JText::_('ADD_COMMENT');?></a>
 								</div>
 								<div id="commentIndicator" class="imc-right"></div>
 								
-								<?php //echo JUtility::getToken();?>
+								<?php //echo JSession::getFormToken();?>
 							</form>
 						<?php else : //not logged?>
 							<?php $return = base64_encode(ImprovemycityHelper::generateRouteLink('index.php?option=com_improvemycity&view=issue&issue_id='.$this->item->id)); ?>

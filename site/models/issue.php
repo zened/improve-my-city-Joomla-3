@@ -87,7 +87,7 @@ class ImprovemycityModelIssue extends JModelItem
 		}
 		if ($this->_item != null){
 			//also get the discussion for that record as well
-			$model_discussions = JModel::getInstance('Discussions', 'ImprovemycityModel');
+			$model_discussions = JModelLegacy::getInstance('Discussions', 'ImprovemycityModel');
 			$this->_item->discussion = $model_discussions->getItems($this->_item->id);
 				
 			$this->_item->reported_rel = ImprovemycityHelper::getRelativeTime($this->_item->reported);
@@ -96,8 +96,6 @@ class ImprovemycityModelIssue extends JModelItem
 		}
 		return $this->_item;
 	}	
-	
-	
 	
 	public function hit($pk = 0)
 	{
@@ -197,7 +195,7 @@ class ImprovemycityModelIssue extends JModelItem
 		$row = $db->loadAssoc();
 
 		$parameters = new JRegistry();
-		$parameters->loadJSON($row['params']);
+		$parameters->loadString($row['params']);
 		$image = $parameters->get('image');		
 
 		return $image;

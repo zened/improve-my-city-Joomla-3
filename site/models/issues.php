@@ -149,7 +149,7 @@ class ImprovemycityModelIssues extends JModelList
 		//I need the discussions model to get discussions for every item...
 		//so I get model (discussions) from within another model (issues) ...
 		
-		//JModel::addIncludePath(JPATH_SITE.'/components/com_improvemycity/models', 'Discussions'); //don't need this we are already inside a model ;)
+		//JModelLegacy::addIncludePath(JPATH_SITE.'/components/com_improvemycity/models', 'Discussions'); //don't need this we are already inside a model ;)
 		
 		
 		// Convert the params field into an object, saving original in _params
