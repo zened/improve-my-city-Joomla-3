@@ -52,7 +52,7 @@ class ImprovemycityViewComments extends JViewLegacy
 		$state	= $this->get('State');
 		$canDo	= ImprovemycityHelper::getActions($state->get('filter.improvemycityid'));
 
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_COMMENTS'), 'items.png');
+		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_COMMENTS'), 'comment');
 
         //Check if the form exists before showing the add/edit buttons
         $formPath = JPATH_COMPONENT_ADMINISTRATOR.DS.'views'.DS.'comment';

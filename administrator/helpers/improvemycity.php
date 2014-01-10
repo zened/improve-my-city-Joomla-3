@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * Improvemycity helper.
  */
-class ImprovemycityHelper
+class ImprovemycityHelper extends JHelperContent
 {
 	/**
 	 * Configure the Linkbar.
@@ -21,27 +21,27 @@ class ImprovemycityHelper
 	public static function addSubmenu($vName = '')
 	{
 
-		JSubMenuHelper::addEntry(
+		JHtmlSidebar::addEntry(
 			JText::_('COM_IMPROVEMYCITY_TITLE_ITEMS'),
 			'index.php?option=com_improvemycity&view=issues',
 			$vName == 'issues'
 		);
-		JSubMenuHelper::addEntry(
+		JHtmlSidebar::addEntry(
 			JText::_('COM_IMPROVEMYCITY_SUBMENU_CATEGORIES'), 
 			'index.php?option=com_categories&view=categories&extension=com_improvemycity', 
 			$vName == 'categories'
 		);
-		JSubMenuHelper::addEntry(
+		JHtmlSidebar::addEntry(
 				JText::_('COM_IMPROVEMYCITY_SUBMENU_COMMENTS'),
 				'index.php?option=com_improvemycity&view=comments',
 				$vName == 'comments'
 		);
-		JSubMenuHelper::addEntry(
+		JHtmlSidebar::addEntry(
 				JText::_('COM_IMPROVEMYCITY_SUBMENU_REPORTS'),
 				'index.php?option=com_improvemycity&view=reports',
 				$vName == 'reports'
 		);
-		JSubMenuHelper::addEntry(
+		JHtmlSidebar::addEntry(
 				JText::_('COM_IMPROVEMYCITY_SUBMENU_KEYS'),
 				'index.php?option=com_improvemycity&view=keys',
 				$vName == 'keys'

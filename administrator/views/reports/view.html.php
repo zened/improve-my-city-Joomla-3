@@ -45,7 +45,7 @@ class ImprovemycityViewReports extends JViewLegacy
 	protected function addToolbar()
 	{
 		require_once JPATH_COMPONENT.DS.'helpers'.DS.'improvemycity.php';
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_REPORT'), 'items.png');
+		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_REPORT'), 'list');
 		JToolBarHelper::back('JTOOLBAR_BACK', 'index.php?option=com_improvemycity');
 	}
 
