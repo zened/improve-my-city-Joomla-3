@@ -48,6 +48,17 @@ class ImprovemycityViewKeys extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
+/*		$document = JFactory::getDocument();
+		$document->addScriptDeclaration('
+			Joomla.submitbutton = function(pressbutton) {
+        	switch(pressbutton) {
+	            case "updatetimestamp":
+                	alert("timestamps updated");
+            	break;
+        		}
+    		}'
+		);
+				*/
 		require_once JPATH_COMPONENT.DS.'helpers'.DS.'improvemycity.php';
 
 		$state	= $this->get('State');
@@ -105,6 +116,6 @@ class ImprovemycityViewKeys extends JViewLegacy
 			JToolBarHelper::preferences('com_improvemycity');
 		}
 
-
+		JToolBarHelper :: custom( 'keys.updateCategoryTimestamp', 'refresh', 'refresh', 'Update timestamps', false, false );
 	}
 }

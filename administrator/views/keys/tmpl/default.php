@@ -35,7 +35,6 @@ $saveOrder	= $listOrder == 'a.ordering';
 <?php endif;?>
 
 	<fieldset id="filter-bar">
-	<a href="<?php echo JRoute::_('index.php?option=com_improvemycity&task=keys.updateCategoryTimestamp');?>" onclick="alert('Categories timestamp is updated.\nPlease use this only if you truly change the categories structure!');">update categories timestamp</a>
 		<div class="filter-search fltlft">
 			<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
 			<input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo JText::_('Search'); ?>" />

@@ -33,6 +33,8 @@ class ImprovemycityControllerKeys extends JControllerAdmin
 		//get model and categories
 		$model = $this->getModel('keys');
 		$updated = $model->updateCategoryTimestamp();
+		JFactory::getApplication()->enqueueMessage('Timestamps updated');
 		$this->setRedirect("index.php?option=com_improvemycity&view=keys");
+		
 	}	
 }

@@ -26,7 +26,7 @@ class ImprovemycityViewReports extends JViewLegacy
 	{
 		$this->state	= $this->get('State');
 		$this->items	= $this->get('Items');
-
+		
 		$canDo		= ImprovemycityHelper::getActions();
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
@@ -48,6 +48,11 @@ class ImprovemycityViewReports extends JViewLegacy
 		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_REPORT'), 'list');
 		JToolBarHelper::back('JTOOLBAR_BACK', 'index.php?option=com_improvemycity');
 		
+		$state	= $this->get('State');
+		$canDo	= ImprovemycityHelper::getActions($state->get('filter.improvemycityid'));		
+		if ($canDo->get('core.admin')) {
+			JToolBarHelper::preferences('com_improvemycity');
+		}		
 	}
 
 	
