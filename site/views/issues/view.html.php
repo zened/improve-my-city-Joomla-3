@@ -253,7 +253,8 @@ class ImprovemycityViewIssues extends JViewLegacy
             $return = array();
             foreach($cats as $JCatNode)
             {
-                $return[$i]->title = $JCatNode->title;
+                $return[$i] = new stdClass();
+            	$return[$i]->title = $JCatNode->title;
                 $return[$i]->id = $JCatNode->id;
 
 				$return[$i]->image = $JCatNode->image;
