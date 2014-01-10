@@ -47,26 +47,26 @@
 		label="COM_IMPROVEMYCITY_SETTINGS_GENERAL_SETTINGS_LABEL"
 		description="COM_IMPROVEMYCITY_SETTINGS_GENERAL_SETTINGS_DESC"
 	>
-			<field name="showcomments" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_SHOW_COMMENTS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_SHOW_COMMENTS_DESC">
+			<field name="showcomments" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_SHOW_COMMENTS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_SHOW_COMMENTS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>		
 	
-			<field name="approveissue" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ISSUE_APPROVAL_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ISSUE_APPROVAL_DESC">
+			<field name="approveissue" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ISSUE_APPROVAL_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ISSUE_APPROVAL_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>		
 	
-			<field name="allowcommentingonclose" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_COMMENT_ON_CLOSED_ISSUES_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_COMMENT_ON_CLOSED_ISSUES_DESC">
+			<field name="allowcommentingonclose" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_COMMENT_ON_CLOSED_ISSUES_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_COMMENT_ON_CLOSED_ISSUES_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>					
-			<field name="allowvotingonclose" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_VOTE_ON_CLOSED_ISSUES_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_VOTE_ON_CLOSED_ISSUES_DESC">
+			<field name="allowvotingonclose" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_VOTE_ON_CLOSED_ISSUES_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_VOTE_ON_CLOSED_ISSUES_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>	
 			
-			<field name="showrelativedates" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_SHOW_RELATIVE_DATES_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_SHOW_RELATIVE_DATES_DESC">
+			<field name="showrelativedates" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_SHOW_RELATIVE_DATES_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_SHOW_RELATIVE_DATES_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>	
@@ -82,27 +82,27 @@
 		label="COM_IMPROVEMYCITY_SETTINGS_MAIL_NOTIFICATIONS_LABEL"
 		description="COM_IMPROVEMYCITY_SETTINGS_MAIL_NOTIFICATIONS_DESC"
 	>
-			<field name="mailnewissueuser" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_ISSUE_TO_USER_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_ISSUE_TO_USER_DESC">
+			<field name="mailnewissueuser" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_ISSUE_TO_USER_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_ISSUE_TO_USER_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>			
-			<field name="mailnewissueadmins" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_ISSUE_TO_ADMINS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_ISSUE_TO_ADMINS_DESC">
+			<field name="mailnewissueadmins" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_ISSUE_TO_ADMINS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_ISSUE_TO_ADMINS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>			
-			<field name="mailnewcommentuser" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_COMMENT_TO_USER_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_COMMENT_TO_USER_DESC">
+			<field name="mailnewcommentuser" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_COMMENT_TO_USER_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_COMMENT_TO_USER_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>			
-			<field name="mailnewcommentadmins" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_COMMENT_TO_ADMINS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_COMMENT_TO_ADMINS_DESC">
+			<field name="mailnewcommentadmins" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_COMMENT_TO_ADMINS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_NEW_COMMENT_TO_ADMINS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>	
-			<field name="mailcategorychangeadmins" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_CHANGE_CATEGORY_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_CHANGE_CATEGORY_DESC">
+			<field name="mailcategorychangeadmins" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_CHANGE_CATEGORY_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_CHANGE_CATEGORY_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>	
-			<field name="mailstatuschangeuser" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_CHANGE_STATUS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_CHANGE_STATUS_DESC">
+			<field name="mailstatuschangeuser" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ON_CHANGE_STATUS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ON_CHANGE_STATUS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>					
@@ -112,34 +112,34 @@
 		label="COM_IMPROVEMYCITY_SETTINGS_ADVANCED_LABEL"
 		description="COM_IMPROVEMYCITY_SETTINGS_ADVANCED_DESC"
 	>
-			<field name="loadjquery" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_JS_DESC">
+			<field name="loadjquery" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_JS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>
-			<field name="loadjqueryui" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_UI_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_UI_JS_DESC">
+			<field name="loadjqueryui" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_UI_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_JQUERY_UI_JS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>
-			<field name="loadbootstrap" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_JS_DESC">
+			<field name="loadbootstrap" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_JS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_JS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>
-			<field name="loadbootstrapcss" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_CSS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_CSS_DESC">
+			<field name="loadbootstrapcss" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_CSS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_LOAD_BOOTSTRAP_CSS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>
-			<field name="popupmodal" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_AJAX_MODAL_CLASS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_AJAX_MODAL_CLASS_DESC">
+			<field name="popupmodal" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_AJAX_MODAL_CLASS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_AJAX_MODAL_CLASS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>			
-			<field name="enablejsoncontroller" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ENABLE_JSON_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ENABLE_JSON_DESC">
+			<field name="enablejsoncontroller" type="radio" default="0" label="COM_IMPROVEMYCITY_SETTINGS_ENABLE_JSON_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_ENABLE_JSON_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>		
 	</fieldset>
 	
 	<fieldset name="credits" label="COM_IMPROVEMYCITY_SETTINGS_CREDITS_LABEL">
-			<field name="credits" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_SHOW_CREDITS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_SHOW_CREDITS_DESC">
+			<field name="credits" type="radio" default="1" label="COM_IMPROVEMYCITY_SETTINGS_SHOW_CREDITS_LABEL" description="COM_IMPROVEMYCITY_SETTINGS_SHOW_CREDITS_DESC" class="btn-group btn-group-yesno">
 			  <option value="0">JNO</option>
 			  <option value="1">JYES</option>
 			</field>	
