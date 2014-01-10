@@ -120,7 +120,6 @@ class ImprovemycityViewIssue extends JViewLegacy
 		// get the menu parameters
 		$menuparams = $this->state->get("parameters.menu");
 		//check if IMC is on Home menu
-		
 		if(empty($menuparams)){
 	        parent::display($tpl);
 		}
