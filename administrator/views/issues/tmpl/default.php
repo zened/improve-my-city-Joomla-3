@@ -311,69 +311,6 @@ $saveOrder	= $listOrder == 'a.ordering';
 					<td class="center hidden-phone">
 						<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 					</td>
-					<td class="center">
-						<?php echo JHtml::_('jgrid.published', $item->published, $i, 'contacts.', $canChange, 'cb', $item->publish_up, $item->publish_down); ?>
-					</td>
-					<td class="nowrap has-context">
-						<div class="pull-left">
-							<?php if ($item->checked_out) : ?>
-								<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'contacts.', $canCheckin); ?>
-							<?php endif; ?>
-							<?php if ($canEdit || $canEditOwn) : ?>
-								<a href="<?php echo JRoute::_('index.php?option=com_contact&task=contact.edit&id='.(int) $item->id); ?>">
-								<?php echo $this->escape($item->name); ?></a>
-							<?php else : ?>
-								<?php echo $this->escape($item->name); ?>
-							<?php endif; ?>
-							<span class="small">
-								<?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($item->alias));?>
-							</span>
-							<div class="small">
-								<?php echo $item->category_title; ?>
-							</div>
-						</div>
-						<div class="pull-left">
-							<?php
-							/*
-								// Create dropdown items
-								JHtml::_('dropdown.edit', $item->id, 'contact.');
-								JHtml::_('dropdown.divider');
-								if ($item->published) :
-									JHtml::_('dropdown.unpublish', 'cb' . $i, 'contacts.');
-								else :
-									JHtml::_('dropdown.publish', 'cb' . $i, 'contacts.');
-								endif;
-
-								if ($item->featured) :
-									JHtml::_('dropdown.unfeatured', 'cb' . $i, 'contacts.');
-								else :
-									JHtml::_('dropdown.featured', 'cb' . $i, 'contacts.');
-								endif;
-
-								JHtml::_('dropdown.divider');
-
-								if ($archived) :
-									JHtml::_('dropdown.unarchive', 'cb' . $i, 'contacts.');
-								else :
-									JHtml::_('dropdown.archive', 'cb' . $i, 'contacts.');
-								endif;
-
-								if ($item->checked_out) :
-									JHtml::_('dropdown.checkin', 'cb' . $i, 'contacts.');
-								endif;
-
-								if ($trashed) :
-									JHtml::_('dropdown.untrash', 'cb' . $i, 'contacts.');
-								else :
-									JHtml::_('dropdown.trash', 'cb' . $i, 'contacts.');
-								endif;
-
-								// render dropdown list
-								echo JHtml::_('dropdown.render');
-							*/	
-							?>
-						</div>
-					</td>
 					
 				<td class="center">
 					<?php echo JHtml::_('grid.id', $i, $item->id); ?>
