@@ -11,8 +11,11 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JHtml::_('behavior.tooltip');
-JHTML::_('script','system/multiselect.js',false,true);
+JHtml::_('bootstrap.tooltip');
+JHtml::_('behavior.multiselect');
+JHtml::_('dropdown.init');
+JHtml::_('formbehavior.chosen', 'select');
+
 $user	= JFactory::getUser();
 $userId	= $user->get('id');
 $listOrder	= $this->state->get('list.ordering');
@@ -20,9 +23,19 @@ $listDirn	= $this->state->get('list.direction');
 $canOrder	= $user->authorise('core.edit.state', 'com_improvemycity');
 $saveOrder	= $listOrder == 'a.ordering';
 ?>
-<a href="<?php echo JRoute::_('index.php?option=com_improvemycity&task=keys.updateCategoryTimestamp');?>" onclick="alert('Categories timestamp is updated.\nPlease use this only if you truly change the categories structure!');">update categories timestamp</a>
+
 <form action="<?php echo JRoute::_('index.php?option=com_improvemycity&view=keys'); ?>" method="post" name="adminForm" id="adminForm">
+<?php if (!empty( $this->sidebar)) : ?>
+	<div id="j-sidebar-container" class="span2">
+		<?php echo $this->sidebar; ?>
+	</div>
+	<div id="j-main-container" class="span10">
+<?php else : ?>
+	<div id="j-main-container">
+<?php endif;?>
+
 	<fieldset id="filter-bar">
+	<a href="<?php echo JRoute::_('index.php?option=com_improvemycity&task=keys.updateCategoryTimestamp');?>" onclick="alert('Categories timestamp is updated.\nPlease use this only if you truly change the categories structure!');">update categories timestamp</a>
 		<div class="filter-search fltlft">
 			<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
 			<input type="text" name="filter_search" id="filter_search" value="<?php echo $this->escape($this->state->get('filter.search')); ?>" title="<?php echo JText::_('Search'); ?>" />

@@ -10,7 +10,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
+//jimport('joomla.application.component.view');
 
 /**
  * View to edit
@@ -34,8 +34,8 @@ class ImprovemycityViewReports extends JViewLegacy
 			return false;
 		}
 
-
 		$this->addToolbar();
+		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
 	}
 
@@ -47,6 +47,7 @@ class ImprovemycityViewReports extends JViewLegacy
 		require_once JPATH_COMPONENT.DS.'helpers'.DS.'improvemycity.php';
 		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_REPORT'), 'list');
 		JToolBarHelper::back('JTOOLBAR_BACK', 'index.php?option=com_improvemycity');
+		
 	}
 
 	

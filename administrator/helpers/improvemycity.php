@@ -49,8 +49,6 @@ class ImprovemycityHelper extends JHelperContent
 				
 		// set some global property
 		$document = JFactory::getDocument();
-		$document->addStyleDeclaration('.icon-48-item {background-image: url(../media/com_improvemycity/images/improvemycity-48x48.png);}');
-		$document->addStyleDeclaration('.icon-48-items {background-image: url(../media/com_improvemycity/images/improvemycity-48x48.png);}');
 		if ($vName == 'categories') 
 		{
 			$document->setTitle(JText::_('COM_IMPROVEMYCITY_ADMINISTRATION_CATEGORIES'));

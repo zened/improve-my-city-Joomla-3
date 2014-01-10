@@ -11,7 +11,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JHtml::_('behavior.tooltip');
+//JHtml::_('behavior.tooltip');
 //JHTML::_('script','system/multiselect.js',false,true);
 
 JHtml::_('bootstrap.tooltip');
@@ -26,7 +26,7 @@ $listDirn	= $this->state->get('list.direction');
 $canOrder	= $user->authorise('core.edit.state', 'com_improvemycity');
 $saveOrder	= $listOrder == 'a.ordering';
 ?>
-
+<?php /*?>
 <form action="<?php echo JRoute::_('index.php?option=com_improvemycity&view=issues'); ?>" method="post" name="adminForm" id="adminForm">
 	<fieldset id="filter-bar">
 		<div class="filter-search fltlft">
@@ -193,7 +193,7 @@ $saveOrder	= $listOrder == 'a.ordering';
 	</div>
 	
 </form>
-
+<?php */?>
 <form action="<?php echo JRoute::_('index.php?option=com_improvemycity&view=issues'); ?>" method="post" name="adminForm" id="adminForm">
 
 <?php if (!empty( $this->sidebar)) : ?>

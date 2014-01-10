@@ -10,7 +10,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.view');
+//jimport('joomla.application.component.view');
 
 /**
  * View class for a list of Improvemycity.
@@ -37,6 +37,7 @@ class ImprovemycityViewIssues extends JViewLegacy
 		}
 
 		$this->addToolbar();
+		$this->sidebar = JHtmlSidebar::render();
 		parent::display($tpl);
 	}
 
