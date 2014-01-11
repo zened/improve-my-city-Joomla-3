@@ -44,9 +44,21 @@ class ImprovemycityViewReports extends JViewLegacy
 	 */
 	protected function addToolbar()
 	{
+		$document = JFactory::getDocument();
+		$document->addScriptDeclaration('
+				Joomla.submitbutton = function(pressbutton) {
+				switch(pressbutton) {
+					case "export":
+						alert("Export will be available in the next major version");
+					break;
+				}
+				}
+		');
+				
 		require_once JPATH_COMPONENT.DS.'helpers'.DS.'improvemycity.php';
 		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_REPORT'), 'list');
-		JToolBarHelper::back('JTOOLBAR_BACK', 'index.php?option=com_improvemycity');
+		//JToolBarHelper::back('JTOOLBAR_BACK', 'index.php?option=com_improvemycity');
+		JToolBarHelper :: custom( 'export', 'file', 'file', 'Export', false, false );
 		
 		$state	= $this->get('State');
 		$canDo	= ImprovemycityHelper::getActions($state->get('filter.improvemycityid'));		

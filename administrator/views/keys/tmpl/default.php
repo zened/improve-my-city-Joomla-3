@@ -81,7 +81,7 @@ $sortFields = $this->getSortFields();
                     <?php echo JHtml::_('grid.sort',  'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
                 </th>
                 <th class="nowrap">
-                    <?php echo JHtml::_('searchtools.sort',  'COM_IMPROVEMYCITY_IMPROVEMYCITY_SKEY_TITLE', 'a.description', $listDirn, $listOrder); ?>
+                    <?php echo JHtml::_('grid.sort',  'COM_IMPROVEMYCITY_IMPROVEMYCITY_SKEY_TITLE', 'a.skey', $listDirn, $listOrder); ?>
                 </th>
 			</tr>
 		</thead>

@@ -32,7 +32,7 @@ JHtml::_('formbehavior.chosen', 'select');
 
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_IMPROVEMYCITY_TITLE_KEY', true)); ?>
 		<div class="row-fluid">
-			<div class="span9">
+			<div class="span3">
 				<?php foreach($this->form->getFieldset('details') as $field): ?>
 					<?php //echo $this->form->getLabel('skey'); ?>
 					<?php //echo $this->form->getInput('skey'); ?>
@@ -40,8 +40,9 @@ JHtml::_('formbehavior.chosen', 'select');
 					<?php echo $field->input;?>
 				<?php endforeach; ?>
 			</div>
-			<div class="span3">
-				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+			<div class="span9">
+				<?php //echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+				<?php //print_r($this->form);?>
 			</div>
 		</div>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
