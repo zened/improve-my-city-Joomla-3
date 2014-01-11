@@ -58,7 +58,7 @@ class ImprovemycityViewKey extends JViewLegacy
         }
 		$canDo		= ImprovemycityHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_KEY'), 'item.png');
+		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_KEY'), 'lock');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit')||($canDo->get('core.create'))))
