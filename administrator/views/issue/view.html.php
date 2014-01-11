@@ -82,7 +82,7 @@ class ImprovemycityViewIssue extends JViewLegacy
         }
 		$canDo		= ImprovemycityHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_ITEM'), 'item.png');
+		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_ITEM'), 'wrench');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit')||($canDo->get('core.create'))))
