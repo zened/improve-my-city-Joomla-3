@@ -57,7 +57,7 @@ class ImprovemycityViewComment extends JViewLegacy
         }
 		$canDo		= ImprovemycityHelper::getActions();
 
-		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_COMMENT'), 'item.png');
+		JToolBarHelper::title(JText::_('COM_IMPROVEMYCITY_TITLE_COMMENT'), 'comment');
 
 		// If not checked out, can save the item.
 		if (!$checkedOut && ($canDo->get('core.edit')||($canDo->get('core.create'))))

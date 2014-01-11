@@ -12,7 +12,13 @@ defined('_JEXEC') or die;
 
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
-$params = $this->form->getFieldsets('params');
+JHtml::_('behavior.keepalive');
+JHtml::_('formbehavior.chosen', 'select');
+
+// Create shortcut to parameters.
+$params = $this->state->get('params');
+$params = $params->toArray();
+
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
@@ -27,34 +33,29 @@ $params = $this->form->getFieldsets('params');
 </script>
 
 <form action="<?php echo JRoute::_('index.php?option=com_improvemycity&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
-	<div class="width-100 fltlft">
-		<fieldset class="adminform">
-			<legend><?php echo JText::_('COM_IMPROVEMYCITY_TITLE_COMMENT'); ?></legend>
-			<ul class="adminformlist">
-				<?php foreach($this->form->getFieldset('details') as $field): ?>
-					
-					<li>
-						<?php 
-						echo $field->label;
-						
-						if ($field->type == 'Editor'){
-							echo '<div style="float:left;">'.$field->input . '</div>';
-						}
-			
-						else{
-							echo $field->input;
-						}
-						
-						?>
-					</li>
-				<?php endforeach; ?>
-            </ul>
-		</fieldset>
+	
+	<div class="form-horizontal">
+		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_IMPROVEMYCITY_LEGEND_DETAILS', true)); ?>
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="form-vertical">
+					<?php foreach($this->form->getFieldset('details') as $field): ?>
+						<div class="control-group">
+							<?php if (!$field->hidden): ?>
+								<?php echo $field->label; ?>
+							<?php endif; ?>
+							<div class="controls">
+								<?php echo $field->input; ?>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+		<?php echo JHtml::_('bootstrap.endTab'); ?>	
 	</div>
-
-	<div class="clr"></div>	
-
+	
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
-	<div class="clr"></div>
 </form>
