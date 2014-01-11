@@ -57,6 +57,9 @@ $params = $params->toArray();
 						</div>
 					<?php endforeach; ?>
 				</div>
+				<?php if($this->form->getValue('photo') != "") : ?>
+				<img src="<?php echo JURI::root().$this->form->getValue('photo'); ?>" class="img-polaroid" />
+				<?php endif;?>				
 			</div>
 			<div class="span3">
 				<div class="form-vertical">
@@ -85,16 +88,6 @@ $params = $params->toArray();
 						
 				</div>	
 				<hr />
-			</div>
-		</div>
-		
-		<div class="row-fluid">
-			<div class="span7">
-				<?php if($this->form->getValue('photo') != "") : ?>
-				<img src="<?php echo JURI::root().$this->form->getValue('photo'); ?>" class="img-polaroid" />
-				<?php endif;?>
-			</div>
-			<div class="span5">
 				<div class="form-horizontal">
 					<?php foreach($this->form->getFieldset('geo') as $field): ?>
 						<div class="control-group">
@@ -108,10 +101,10 @@ $params = $params->toArray();
 							</div>
 						</div>
 					<?php endforeach; ?>
-				</div>								
-			
+				</div>					
 			</div>
 		</div>
+		
 		<?php echo JHtml::_('bootstrap.endTab'); ?>	
 		
 		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'user', JText::_('COM_IMPROVEMYCITY_LEGEND_USER_DETAILS', true)); ?>
