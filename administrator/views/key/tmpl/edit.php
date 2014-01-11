@@ -10,9 +10,9 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
-$params = $this->form->getFieldsets('params');
+JHtml::_('formbehavior.chosen', 'select');
+
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
@@ -27,34 +27,28 @@ $params = $this->form->getFieldsets('params');
 </script>
 
 <form action="<?php echo JRoute::_('index.php?option=com_improvemycity&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
-	<div class="width-100 fltlft">
-		<fieldset class="adminform">
-			<legend><?php echo JText::_('COM_IMPROVEMYCITY_TITLE_KEY'); ?></legend>
-			<ul class="adminformlist">
-				<?php foreach($this->form->getFieldset('details') as $field): ?>
-					
-					<li>
-						<?php 
-						echo $field->label;
-						
-						if ($field->type == 'Editor'){
-							echo '<div style="float:left;">'.$field->input . '</div>';
-						}
-			
-						else{
-							echo $field->input;
-						}
-						
-						?>
-					</li>
-				<?php endforeach; ?>
-            </ul>
-		</fieldset>
-	</div>
+<div class="form-horizontal">
+		<?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'details')); ?>
 
-	<div class="clr"></div>	
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'details', JText::_('COM_IMPROVEMYCITY_TITLE_KEY', true)); ?>
+		<div class="row-fluid">
+			<div class="span9">
+				<?php foreach($this->form->getFieldset('details') as $field): ?>
+					<?php //echo $this->form->getLabel('skey'); ?>
+					<?php //echo $this->form->getInput('skey'); ?>
+					<?php echo $field->label;?>
+					<?php echo $field->input;?>
+				<?php endforeach; ?>
+			</div>
+			<div class="span3">
+				<?php echo JLayoutHelper::render('joomla.edit.global', $this); ?>
+			</div>
+		</div>
+		<?php echo JHtml::_('bootstrap.endTab'); ?>
+
+		<?php echo JHtml::_('bootstrap.endTabSet'); ?>
+	</div>
 
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
-	<div class="clr"></div>
 </form>

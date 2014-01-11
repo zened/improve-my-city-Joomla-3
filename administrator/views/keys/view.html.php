@@ -30,6 +30,9 @@ class ImprovemycityViewKeys extends JViewLegacy
 		$this->items		= $this->get('Items');
 		$this->pagination	= $this->get('Pagination');
 
+		//$this->filterForm    = $this->get('FilterForm');
+		//$this->activeFilters = $this->get('ActiveFilters');
+		
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));
@@ -118,4 +121,20 @@ class ImprovemycityViewKeys extends JViewLegacy
 
 		JToolBarHelper :: custom( 'keys.updateCategoryTimestamp', 'refresh', 'refresh', 'Update timestamps', false, false );
 	}
+	
+	protected function getSortFields()
+	{
+		return array(
+				'ordering' => JText::_('JGRID_HEADING_ORDERING'),
+				//'a.state' => JText::_('JSTATUS'),
+				//'a.name' => JText::_('COM_BANNERS_HEADING_NAME'),
+				//'a.sticky' => JText::_('COM_BANNERS_HEADING_STICKY'),
+				//'client_name' => JText::_('COM_BANNERS_HEADING_CLIENT'),
+				//'impmade' => JText::_('COM_BANNERS_HEADING_IMPRESSIONS'),
+				//'clicks' => JText::_('COM_BANNERS_HEADING_CLICKS'),
+				//'a.language' => JText::_('JGRID_HEADING_LANGUAGE'),
+				'a.skey' => JText::_('COM_IMPROVEMYCITY_KEY'),
+				'a.id' => JText::_('JGRID_HEADING_ID')
+		);
+	}	
 }

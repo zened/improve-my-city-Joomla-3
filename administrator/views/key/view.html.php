@@ -37,6 +37,7 @@ class ImprovemycityViewKey extends JViewLegacy
 		}
 
 		$this->addToolbar();
+		JHtml::_('jquery.framework');
 		parent::display($tpl);
 	
 	}
